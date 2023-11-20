@@ -45,7 +45,7 @@ export default async function insert (client: Pool, temp: any, tableName: string
           .catch(async (e: any) => {
               num++;
               if (num == 2) {
-                  process.exit();
+                throw new Error("Invalid table structure!");
               }
               await insert(client, temp, tableName, returning, num);
           });
@@ -60,7 +60,7 @@ export default async function insert (client: Pool, temp: any, tableName: string
           .catch(async (e: any) => {
               num++;
               if (num == 2) {
-                  process.exit();
+                throw new Error("Invalid table structure!");
               }
               await insert(client, temp, tableName, returning, num);
           });
